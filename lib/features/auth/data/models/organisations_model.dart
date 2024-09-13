@@ -1,55 +1,39 @@
+import 'package:incetro_test/features/auth/data/models/organisations_element_model.dart';
+import 'package:incetro_test/features/auth/data/models/organisations_meta_model.dart';
 import 'package:incetro_test/features/auth/domain/entities/organisations.dart';
 
 class OrganisationsModel{
-  int id;
-  String name;
-  String photo;
-  double rate;
-  List<int> averageCheck;
-  List<String> cuisins;
-  bool isFavorite;
-  String distance;
+  List <OrganisationsElementModel> data;
+  OrganisationsMetaModel meta;
 
-  OrganisationsModel({required this.id, required this.name, required this.photo, required this.rate, required this.averageCheck, 
-  required this.cuisins, required this.isFavorite, required this.distance});
+  OrganisationsModel({required this.data, required this.meta});
 
   factory OrganisationsModel.fromJson(Map<String, dynamic> json){
     return OrganisationsModel(
-      id: json['id'],
-      name: json['name'],
-      photo: json['photo'],
-      rate: json['rate'],
-      averageCheck: json['averageCheck'],
-      cuisins: json['cuisins'],
-      isFavorite: json['isFavorite'],
-      distance: json['distance'],
+      data: List<OrganisationsElementModel>.from(json["data"].map((x) => OrganisationsElementModel.fromJson(x))),
+      meta: OrganisationsMetaModel.fromJson(json["meta"]),
     );
   }
 
   Map<String, dynamic> toJson(){
     return {
-      'id': id,
-      'name': name,
-      'photo': photo,
-      'rate': rate,
-      'averageCheck': averageCheck,
-      'cuisins': cuisins,
-      'isFavorite': isFavorite,
-      'distance': distance,
+      "data": data.map((x) => x.toJson()).toList(),
+      "meta": meta.toJson(),
     };
   }
 
   Organisations toEntity(){
     return Organisations(
-      id: id,
-      name: name,
-      photo: photo,
-      rate: rate,
-      averageCheck: averageCheck,
-      cuisins: cuisins,
-      isFavorite: isFavorite,
-      distance: distance,
+      data: data.map((x) => x.toEntity()).toList(),
+      meta: meta.toEntity(),
     );
   }
 
+  Organisations toEntityDemo(){
+    return Organisations(
+      data: data.map((x) => x.toEntity()).toList(),
+      meta: meta.toEntity(),
+      isDemo: true,
+    );
+  }
 }

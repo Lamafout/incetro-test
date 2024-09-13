@@ -32,7 +32,7 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<Either<Failure, Organisations>> getDemo() async {
     try{
       final response = await remoteSource.getOrganisationsDemo();
-      return Right(response.toEntity());
+      return Right(response.toEntityDemo());
     }
     catch(e){
       return Left(NoInternetFailure('Check your connection and retry'));
