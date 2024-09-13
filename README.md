@@ -1,16 +1,5 @@
-# incetro_test
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Test project for Incetro
+## Descrption
+The application allows the user to get acquainted with various restaurants, as well as add their favorite ones to favorites.
+## Tech description
+The application is implemented using the BLoC pattern and the clean architecture pattern. Each user or application action has its own feature directory and is easily described in clear code.
