@@ -38,4 +38,17 @@ class AuthRepositoryImpl implements AuthRepository {
       return Left(NoInternetFailure('Check your connection and retry'));
     }
   }
+
+  @override
+  Future<Either<Failure, Map<String, String>>> updateTokens() async {
+    final oldAccessToken = await localSource.getToken('access');
+    final oldRefreshToken = await localSource.getToken('refresh');
+    try{
+      final response = await remoteSource.updateToken(oldAccessToken as String, oldRefreshToken as String);
+      return Right(response);
+    }
+    catch(e){
+      return Left(NoInternetFailure('Check your connection and retry'));
+    }
+  }
 }

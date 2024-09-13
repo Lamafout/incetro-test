@@ -1,0 +1,1 @@
+const baseUrl = 'https://api.mycyprus.app/api/';

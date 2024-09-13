@@ -11,7 +11,20 @@ class GetOrganisationsUseCase {
     final organisations = await authRepository.signIn();
     return organisations.fold(
         (failure) async{
-          if (failure is NoTokenFailure){
+          if (failure is IncorrectTokenFailure){
+            final refreshResult = await authRepository.updateTokens();
+            return refreshResult.fold(
+              (failureRefresh) => Left(failureRefresh),
+              (successRefresh) async{
+                final newOrganisations = await authRepository.signIn();
+                return newOrganisations.fold(
+                  (newFailure) => Left(newFailure),
+                  (newSuccess) => Right(newSuccess)
+                );
+              }
+            );
+          } 
+          else if (failure is NoTokenFailure){
             final demo = await authRepository.getDemo();
             return demo.fold(
               (failureDemo) => Left(failureDemo),
