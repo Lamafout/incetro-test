@@ -1,13 +1,13 @@
 import 'package:dartz/dartz.dart';
-import 'package:incetro_test/features/auth/data/sources/local_source.dart';
-import 'package:incetro_test/features/auth/data/sources/remote_source.dart';
+import 'package:incetro_test/features/auth/data/sources/auth_local_source.dart';
+import 'package:incetro_test/features/auth/data/sources/auth_remote_source.dart';
 import 'package:incetro_test/features/auth/domain/entities/failure.dart';
 import 'package:incetro_test/features/auth/domain/entities/organisations.dart';
 import 'package:incetro_test/features/auth/domain/repositories/auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
-  final LocalSource localSource;
-  final RemoteSource remoteSource;
+  final LocalSourceAuth localSource;
+  final RemoteSourceAuth remoteSource;
   AuthRepositoryImpl({required this.localSource, required this.remoteSource});
 
   @override
@@ -45,6 +45,8 @@ class AuthRepositoryImpl implements AuthRepository {
     final oldRefreshToken = await localSource.getToken('refresh');
     try{
       final response = await remoteSource.updateToken(oldAccessToken as String, oldRefreshToken as String);
+      localSource.setToken('access', response['access_token'] as String);
+      localSource.setToken('refresh', response['refresh_token'] as String);
       return Right(response);
     }
     catch(e){

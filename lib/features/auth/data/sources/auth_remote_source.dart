@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:incetro_test/config/base_url.dart';
 import 'package:incetro_test/features/auth/data/models/organisations_model.dart';
+import 'package:incetro_test/res/remote_source.dart';
 
-class RemoteSource {
-  RemoteSource();
+class RemoteSourceAuth extends RemoteSource{
   Future<OrganisationsModel> getOrganisations(String token) async {
     final response = await http.get(
         Uri.parse(baseUrl + getOrgsUrl),
@@ -26,25 +26,6 @@ class RemoteSource {
     if (response.statusCode == 200) {
       return OrganisationsModel.fromJson(json.decode(response.body));
     } else {
-      throw Exception('Failed to load data');
-    }
-  }
-
-  Future<Map<String, String>> updateToken(String oldAccessToken, String oldRefreshToken) async{
-    final response = await http.post(
-      Uri.parse(baseUrl + refreshUrl),
-      headers: <String, String>{
-        'Content-Type': 'application/json',
-      },
-      body: jsonEncode(<String, String>{
-        'access_token': oldAccessToken,
-        'refresh_token': oldRefreshToken,
-      }),
-    );
-    if (response.statusCode == 200) {
-      return json.decode(response.body);
-    }
-    else {
       throw Exception('Failed to load data');
     }
   }

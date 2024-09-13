@@ -1,6 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-class LocalSource{
+abstract class LocalSource{
   final SharedPreferences sharedPreferences;
   LocalSource(this.sharedPreferences);
 
