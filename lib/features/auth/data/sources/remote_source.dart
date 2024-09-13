@@ -4,12 +4,10 @@ import 'package:incetro_test/config/base_url.dart';
 import 'package:incetro_test/features/auth/data/models/organisations_model.dart';
 
 class RemoteSource {
-  final String url;
-
-  RemoteSource(this.url);
+  RemoteSource();
   Future<OrganisationsModel> getOrganisations(String token) async {
     final response = await http.get(
-        Uri.parse(baseUrl + url),
+        Uri.parse(baseUrl + getOrgsUrl),
         headers: <String, String>{
           'Authorization' : 'Token $token'
         }
@@ -23,7 +21,7 @@ class RemoteSource {
 
   Future<OrganisationsModel> getOrganisationsDemo() async{
     final response = await http.get(
-        Uri.parse(baseUrl + url),
+        Uri.parse(baseUrl + getOrgsDemoUrl),
       );
     if (response.statusCode == 200) {
       return OrganisationsModel.fromJson(json.decode(response.body));
@@ -34,7 +32,7 @@ class RemoteSource {
 
   Future<Map<String, String>> updateToken(String oldAccessToken, String oldRefreshToken) async{
     final response = await http.post(
-      Uri.parse(baseUrl + url),
+      Uri.parse(baseUrl + refreshUrl),
       headers: <String, String>{
         'Content-Type': 'application/json',
       },

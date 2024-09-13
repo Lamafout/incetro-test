@@ -3,9 +3,9 @@ import 'package:incetro_test/features/auth/domain/entities/failure.dart';
 import 'package:incetro_test/features/auth/domain/entities/organisations.dart';
 import 'package:incetro_test/features/auth/domain/repositories/auth_repository.dart';
 
-class GetOrganisationsUseCase {
+class AuthUsecases {
   final AuthRepository authRepository;
-  GetOrganisationsUseCase(this.authRepository);
+  AuthUsecases(this.authRepository);
 
   Future<Either<Failure, Organisations>> execute() async {
     final organisations = await authRepository.signIn();
