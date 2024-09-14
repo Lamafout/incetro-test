@@ -3,6 +3,10 @@ import 'package:incetro_test/features/auth/data/repositories/auth_repository_imp
 import 'package:incetro_test/features/auth/data/sources/auth_local_source.dart';
 import 'package:incetro_test/features/auth/data/sources/auth_remote_source.dart';
 import 'package:incetro_test/features/auth/domain/usecases/auth_usecases.dart';
+import 'package:incetro_test/features/card_details/data/repositories/card_details_repository_impl.dart';
+import 'package:incetro_test/features/card_details/data/sources/card_details_local_source.dart';
+import 'package:incetro_test/features/card_details/data/sources/card_details_remote_source.dart';
+import 'package:incetro_test/features/card_details/domain/usecases/card_details_usecase.dart';
 import 'package:incetro_test/features/send_email/data/repositories/send_email_repository_impl.dart';
 import 'package:incetro_test/features/send_email/data/sources/send_email_local_source.dart';
 import 'package:incetro_test/features/send_email/data/sources/send_email_remote_source.dart';
@@ -37,5 +41,11 @@ void setupDi() async {
   di.registerLazySingleton<VerificationRemoteSource>(() => VerificationRemoteSource());
   di.registerLazySingleton<VerificationRepositoryImpl>(() => VerificationRepositoryImpl(verificationLocalSource: di<VerificationLocalSource>(), verificationRemoteSource: di<VerificationRemoteSource>()));
   di.registerLazySingleton<VerificationUsecase>(() => VerificationUsecase(di<VerificationRepositoryImpl>()));
+
+  // CARD DETAILS
+  di.registerLazySingleton<CardDetailsLocalSource>(() => CardDetailsLocalSource(sharedPreferences));
+  di.registerLazySingleton<CardDetailsRemoteSource>(() => CardDetailsRemoteSource());
+  di.registerLazySingleton<CardDetailsRepositoryImpl>(() => CardDetailsRepositoryImpl(cardDetailsLocalSource: di<CardDetailsLocalSource>(), cardDetailsRemoteSource: di<CardDetailsRemoteSource>()));
+  di.registerLazySingleton<CardDetailsUsecase>(() => CardDetailsUsecase(cardDetailsRepository: di<CardDetailsRepositoryImpl>()));
 
 }

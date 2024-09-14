@@ -27,3 +27,10 @@ class BadRequestException implements Exception{
   @override
   String toString() => 'BadRequestException: $message';
 }
+
+class IncorrectTokenException implements Exception{
+  final String message;
+  IncorrectTokenException(this.message);
+  @override
+  String toString() => 'IncorrectTokenException: $message';
+}

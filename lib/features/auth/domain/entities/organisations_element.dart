@@ -3,10 +3,11 @@ class OrganisationsElement {
   String name;
   String photo;
   double rate;
-  List<int> averageCheck;
+  List<dynamic> averageCheck;
   List<String> cuisins;
   bool isFavorite;
-  String distance;
+  // TODO определиться с типом данных
+  dynamic distance;
 
   OrganisationsElement({required this.id, required this.name, required this.photo, required this.rate, required this.averageCheck, 
   required this.cuisins, required this.isFavorite, required this.distance});

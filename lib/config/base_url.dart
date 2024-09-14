@@ -4,3 +4,4 @@ const getOrgsUrl = 'internship/organizations/category/1/organizations/';
 const getOrgsDemoUrl = 'internship/organizations/demo/';
 const sendEmailUrl = 'user/send-code/';
 const sendVerificationCodeUrl = 'user/authenticate/';
+const getOrganisationUrl = 'internship/organization/';

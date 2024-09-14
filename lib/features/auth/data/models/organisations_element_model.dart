@@ -8,7 +8,8 @@ class OrganisationsElementModel {
   List<int> averageCheck;
   List<String> cuisins;
   bool isFavorite;
-  String distance;
+  // TODO определиться с типом данных
+  dynamic distance;
 
   OrganisationsElementModel({required this.id, required this.name, required this.photo, required this.rate, required this.averageCheck, 
   required this.cuisins, required this.isFavorite, required this.distance});
