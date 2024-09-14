@@ -10,19 +10,19 @@ class OrganisationsMetaModel{
 
   factory OrganisationsMetaModel.fromJson(Map<String, dynamic> json) {
     return OrganisationsMetaModel(
-      totalCount: json['totalCount'],
-      pageCount: json['pageCount'],
-      currentPage: json['currentPage'],
-      perPage: json['perPage'],
+      totalCount: json['total_count'],
+      pageCount: json['page_count'],
+      currentPage: json['current_page'],
+      perPage: json['per_page'],
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'totalCount': totalCount,
-      'pageCount': pageCount,
-      'currentPage': currentPage,
-      'perPage': perPage,
+      'total_count': totalCount,
+      'page_count': pageCount,
+      'current_page': currentPage,
+      'per_page': perPage,
     };
   }
 

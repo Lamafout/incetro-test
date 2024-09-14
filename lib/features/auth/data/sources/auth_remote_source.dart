@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:incetro_test/config/base_url.dart';
 import 'package:incetro_test/features/auth/data/models/organisations_model.dart';
-import 'package:incetro_test/res/remote_source.dart';
+import 'package:incetro_test/res/sources/remote_source.dart';
 
 class RemoteSourceAuth extends RemoteSource{
   Future<OrganisationsModel> getOrganisations(String token) async {

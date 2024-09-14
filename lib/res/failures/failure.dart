@@ -15,5 +15,15 @@ class NoTokenFailure extends Failure{
 
 class NoInternetFailure extends Failure{
   NoInternetFailure(super.message);
+}
 
+class IncorrectCodeFailure extends Failure{
+  IncorrectCodeFailure(super.message);
+}
+
+class BadRequestException implements Exception{
+  final String message;
+  BadRequestException(this.message);
+  @override
+  String toString() => 'BadRequestException: $message';
 }

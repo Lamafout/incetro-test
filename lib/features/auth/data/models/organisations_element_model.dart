@@ -19,9 +19,9 @@ class OrganisationsElementModel {
       name: json['name'],
       photo: json['photo'],
       rate: json['rate'],
-      averageCheck: json['averageCheck'],
+      averageCheck: json['average_check'],
       cuisins: json['cuisins'],
-      isFavorite: json['isFavorite'],
+      isFavorite: json['is_favorite'],
       distance: json['distance'],
     );
   }
@@ -32,9 +32,9 @@ class OrganisationsElementModel {
       'name': name,
       'photo': photo,
       'rate': rate,
-      'averageCheck': averageCheck,
+      'average_check': averageCheck,
       'cuisins': cuisins,
-      'isFavorite': isFavorite,
+      'is_favorite': isFavorite,
       'distance': distance,
     };
   }

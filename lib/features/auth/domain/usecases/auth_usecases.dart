@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:incetro_test/features/auth/domain/entities/failure.dart';
+import 'package:incetro_test/res/failures/failure.dart';
 import 'package:incetro_test/features/auth/domain/entities/organisations.dart';
 import 'package:incetro_test/features/auth/domain/repositories/auth_repository.dart';
 

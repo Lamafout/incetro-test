@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:incetro_test/config/base_url.dart';
 import 'package:incetro_test/features/send_email/data/models/send_email_model.dart';
-import 'package:incetro_test/res/remote_source.dart';
+import 'package:incetro_test/res/sources/remote_source.dart';
 import 'package:http/http.dart' as http;
 
 class SendEmailRemoteSource extends RemoteSource{
