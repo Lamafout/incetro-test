@@ -23,7 +23,7 @@ class RemoteSourceAuth extends RemoteSource{
     final response = await http.get(
         Uri.parse(baseUrl + getOrgsDemoUrl),
       );
-    if (response.statusCode == 200) {
+    if (response.statusCode >= 200 && response.statusCode <= 299) {
       return OrganisationsModel.fromJson(json.decode(response.body));
     } else {
       throw Exception('Failed to load data');

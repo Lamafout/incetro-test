@@ -12,7 +12,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       final authUsecases = di<AuthUsecases>();
       final result = await authUsecases.execute();
       result.fold(
-        (failure) => emit(FailureState()),
+        (failure) => emit(FailureState(failure.message)),
         (success) {
           success.isDemo == true 
           ? emit(UnauthenticatedState(success))

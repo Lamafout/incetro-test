@@ -2,12 +2,12 @@ import 'package:incetro_test/features/auth/domain/entities/organisations_element
 
 class OrganisationsElementModel {
   int id;
-  String name;
-  String photo;
-  double rate;
-  List<int> averageCheck;
-  List<String> cuisins;
-  bool isFavorite;
+  String? name;
+  String? photo;
+  double? rate;
+  List<dynamic> averageCheck;
+  List<String>? cuisins;
+  bool? isFavorite;
   // TODO определиться с типом данных
   dynamic distance;
 
@@ -20,9 +20,9 @@ class OrganisationsElementModel {
       name: json['name'],
       photo: json['photo'],
       rate: json['rate'],
-      averageCheck: json['average_check'],
+      averageCheck: json['averageCheck'],
       cuisins: json['cuisins'],
-      isFavorite: json['is_favorite'],
+      isFavorite: json['isCavorite'],
       distance: json['distance'],
     );
   }

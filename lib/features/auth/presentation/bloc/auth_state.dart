@@ -10,4 +10,7 @@ class UnauthenticatedState extends AuthState{
   final Organisations organisations;
   UnauthenticatedState(this.organisations);
 }
-class FailureState extends AuthState{}
+class FailureState extends AuthState{
+  final String? message;
+  FailureState(this.message);
+}
