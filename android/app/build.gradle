@@ -1,12 +1,12 @@
 buildscript {
-    ext.kotlin_version = '1.8.22' // Последняя версия Kotlin
+    ext.kotlin_version = '1.6.0' 
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "com.android.tools.build:gradle:8.1.1" // Версия Gradle, которая подходит для Kotlin
+        classpath "com.android.tools.build:gradle:8.1.1" // 
     }
 }
 
@@ -68,7 +68,7 @@ android {
             keyAlias 'my_alias'
             keyPassword 'Lamakey1'
             storeFile file('my_key.jks')
-            storePassword ''
+            storePassword 'Lamakey1'
         }
     }
     buildTypes {

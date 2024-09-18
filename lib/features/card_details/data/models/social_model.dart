@@ -16,7 +16,6 @@ class SocialModel{
   }); 
 
   factory SocialModel.fromJson(Map<String, dynamic> json) {
-    print('МЫ ДОШЛИ ДО ТЕЛА ФУНКЦИИ СОШИАЛ');
     return SocialModel(
       id: json['id'] ?? 0,
       type: json['type'] ?? 0,
