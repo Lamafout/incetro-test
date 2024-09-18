@@ -17,21 +17,7 @@ class MyCyprus extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return Platform.isIOS
-    ? const CupertinoApp(
-      theme: CupertinoThemeData(
-          primaryContrastingColor: Color(0xFF32ade6),
-          textTheme: CupertinoTextThemeData(
-            navLargeTitleTextStyle: TextStyle(color: Colors.black, fontWeight: FontWeight.w800, fontSize: 18),
-            navTitleTextStyle: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),
-            textStyle: TextStyle(color: Colors.black54, fontSize: 16),
-          ),
-          scaffoldBackgroundColor: Color(0xFFf2f2f7),
-        ),
-        title: 'MyCyprus',
-      home: HomePage(),
-    )
-    : MaterialApp(
+    return MaterialApp(
       theme: ThemeData(
           iconTheme: const IconThemeData(color:Color(0xFF32ade6)),
           textTheme: const TextTheme(
@@ -65,44 +51,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Platform.isIOS
-    ? CupertinoTabScaffold(
-        tabBar: CupertinoTabBar(
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(
-                CupertinoIcons.heart_fill,
-              ),
-              label: 'Favorites',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                CupertinoIcons.house_alt_fill,
-              ),
-              label: 'Main',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                CupertinoIcons.person_fill,
-              ),
-              label: 'Person',
-            ),
-          ]
-        ), 
-        tabBuilder: (context, index) {
-          switch (index) {
-            case 0:
-              return const CupertinoPageScaffold(child: FavoritesPage());
-            case 1:
-              return const CupertinoPageScaffold(child: MainPage());
-            case 2:
-              return const CupertinoPageScaffold(child: ProfilePage());
-            default:
-              return const CupertinoPageScaffold(child: MainPage());
-          }
-        },
-      )
-    : Scaffold(
+    return Scaffold(
       body: CustomScrollView(
         slivers: [
           SliverAppBar(

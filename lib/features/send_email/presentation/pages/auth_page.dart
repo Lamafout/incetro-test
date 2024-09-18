@@ -37,9 +37,9 @@ class _AuthPageState extends State<AuthPage> {
                   height: maxHeight,
                   width: maxWidth,
                   child: Image.asset(
-                  'assets/images/auth_pic.jpg',
-                  fit: BoxFit.fitHeight,
-                                ),
+                    'assets/images/auth_page_pic.jpg',
+                    fit: BoxFit.fitWidth,
+                  ),
                 );
               },
             ),

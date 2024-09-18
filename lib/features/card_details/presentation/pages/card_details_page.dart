@@ -67,10 +67,11 @@ class CardDetailsPage extends StatelessWidget {
               organisation = state.organisation;
               return Column(
                 children: [
+                  // photos slider
                   SizedBox(
                     height: 300,
                     child: PageView.builder(
-                      controller: PageController(viewportFraction: 0.9),
+                      controller: PageController(viewportFraction: 0.95),
                       scrollDirection: Axis.horizontal,
                       itemCount: organisation.photos.length,
                       itemBuilder: (context, index) {
@@ -92,16 +93,18 @@ class CardDetailsPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10),
+                  // restaurant info
                   Container(
                     width: MediaQuery.of(context).size.width,
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 15),
+                        horizontal: 20, vertical: 15),
                     decoration: const BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                     ),
                     child: Column(
                       children: [
+                        // name and like icon
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -122,6 +125,7 @@ class CardDetailsPage extends StatelessWidget {
                             )
                           ],
                         ),
+                        // stars and average check
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -174,6 +178,46 @@ class CardDetailsPage extends StatelessWidget {
                                       .textTheme
                                       .textStyle
                                   : Theme.of(context).textTheme.labelSmall,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 10,),
+                  // description
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 15),
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // description
+                        Row(
+                          children: [
+                            Text(
+                              'Description',
+                              style: Platform.isIOS
+                              ? CupertinoTheme.of(context).textTheme.navTitleTextStyle
+                              : Theme.of(context).textTheme.titleLarge,
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                organisation.detailedInfo ?? '',
+                                softWrap: true,
+                                style: Platform.isIOS
+                                ? CupertinoTheme.of(context).textTheme.textStyle
+                                : Theme.of(context).textTheme.labelMedium,
+                              ),
                             ),
                           ],
                         )

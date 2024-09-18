@@ -83,9 +83,23 @@ class _PinCodeInputState extends State<PinCodeInput> {
         child: Material(
           child: Stack(
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(pinLength, (index) {
+                        return _buildPinBox(index);
+                      }),
+                    ),
+                  ),
+                ],
+              ),
               Container(
                 decoration: const BoxDecoration(
-                  color: Color(0xFFf2f2f7)
+                  color: Colors.transparent
                 ),
                 width: MediaQuery.of(context).size.width,
                 child: TextField(
@@ -101,20 +115,6 @@ class _PinCodeInputState extends State<PinCodeInput> {
                   ),
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: List.generate(pinLength, (index) {
-                        return _buildPinBox(index);
-                      }),
-                    ),
-                  ),
-                ],
-              )
             ],
           ),
         ),
