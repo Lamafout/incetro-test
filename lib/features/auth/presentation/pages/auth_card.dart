@@ -2,11 +2,20 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:incetro_test/features/auth/presentation/pages/organisaions_element_widget.dart';
+import 'package:incetro_test/features/send_email/presentation/pages/auth_page.dart';
 
 class AuthCardWidget extends OrganisationsElementWidget {
+  onClick(BuildContext context) {
+    showModalBottomSheet(
+      shape: const BeveledRectangleBorder(borderRadius: BorderRadius.only(topLeft:  Radius.circular(20), topRight: Radius.circular(20))),
+      isScrollControlled: true,
+      context: context,
+      builder: (context) {
+        return const AuthPage();
+      }
+    );
+  }
   const AuthCardWidget({super.key});
   @override
   Widget build(BuildContext context) {
@@ -69,7 +78,7 @@ class AuthCardWidget extends OrganisationsElementWidget {
                                 size: 20,
                               ),
                               const SizedBox(width: 10,),
-                              PlatformText(
+                              Text(
                                 'Share your reviews',
                                 style: Platform.isIOS
                                   ? CupertinoTheme.of(context).textTheme.textStyle.copyWith(color: Colors.white)
@@ -86,7 +95,7 @@ class AuthCardWidget extends OrganisationsElementWidget {
                                 size: 20,
                               ),
                               const SizedBox(width: 10,),
-                              PlatformText(
+                              Text(
                                 'Keep important things in your favorites',
                                 style: Platform.isIOS
                                   ? CupertinoTheme.of(context).textTheme.textStyle.copyWith(color: Colors.white)
@@ -118,7 +127,7 @@ class AuthCardWidget extends OrganisationsElementWidget {
                           ),
                           padding: const EdgeInsets.symmetric(vertical: 16),
                         ),
-                        onPressed: onTap,
+                        onPressed: () {onClick(context);},
                         child: Text(
                           'Log in',
                           style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white,),

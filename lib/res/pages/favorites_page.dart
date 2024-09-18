@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:incetro_test/di/di.dart';
@@ -26,13 +29,46 @@ class _FavoritesPageState extends State<FavoritesPage> {
         switch (state) {
           case AuthenticatedState():
             return Column(
-              children: state.organisations.data.map((org) => OrganisationCardWidget(organisationsElement: org)).toList(),
+              children: state.organisations.data.where((elem) => elem.isFavorite == true).isEmpty
+              ? [
+                  Text(
+                    'This is where your favorite restoraunts will be',
+                    style: Platform.isIOS
+                    ? CupertinoTheme.of(context).textTheme.navLargeTitleTextStyle
+                    : Theme.of(context).textTheme.headlineLarge,
+                  ),
+                  const SizedBox(height: 40),
+                  const Icon(
+                    CupertinoIcons.heart,
+                    color: Colors.grey,
+                    size: 50,
+                  ),
+                  const SizedBox(height: 40),
+                ]
+              : state.organisations.data.where((elem) => elem.isFavorite == true)
+                .map((org) => OrganisationCardWidget(organisationsElement: org)).toList(),
             );
           case UnauthenticatedState():
-            return const Column(
-              children: [
-                AuthCardWidget(),
-              ],
+            return Container(
+              height: MediaQuery.of(context).size.height,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'This is where your favorite restoraunts will be',
+                    style: Platform.isIOS
+                    ? CupertinoTheme.of(context).textTheme.navLargeTitleTextStyle
+                    : Theme.of(context).textTheme.headlineLarge,
+                  ),
+                  const SizedBox(height: 40),
+                  const Icon(
+                    CupertinoIcons.heart,
+                    color: Colors.grey,
+                    size: 50,
+                  ),
+                  const SizedBox(height: 40),
+                ],
+              ),
             );
           case FailureState():
             return Column(

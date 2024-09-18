@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:incetro_test/di/di.dart';
+import 'package:incetro_test/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:incetro_test/features/card_details/domain/entities/organisation.dart';
 import 'package:incetro_test/features/card_details/domain/usecases/card_details_usecase.dart';
 import 'package:incetro_test/res/failures/failure.dart';
@@ -19,11 +20,14 @@ class CardDetailsBloc extends Bloc<CardDetailsEvent, CardDetailsState> {
             emit(NoTokenState());
           }
           else {
-            emit(FailureState());
+            emit(FailureWhileGettingCardDetailsState(failure.toString()));
           }
         },
         (success) => emit(GotOrganisationState(success))
       );
+    });
+    on<ExitFromPage>((event, emit) {
+      emit(CardDetailsInitial());
     });
   }
 }

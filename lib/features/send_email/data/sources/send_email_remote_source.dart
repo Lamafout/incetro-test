@@ -12,9 +12,9 @@ class SendEmailRemoteSource extends RemoteSource{
       headers: <String, String>{
         'Content-Type': 'application/json'
       },
-      body: jsonEncode(requestEmail.toJson()),
+      body: json.encode(requestEmail.toJson()),
     );
-    if (response.statusCode == 200){
+    if (response.statusCode >= 200 && response.statusCode < 300){
       return json.decode(response.body)['status'];
     }
     else{

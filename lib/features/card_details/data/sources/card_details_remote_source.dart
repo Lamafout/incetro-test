@@ -15,8 +15,9 @@ class CardDetailsRemoteSource extends RemoteSource{
       }
     );
 
-    if(response.statusCode == 200){
-      return OrganisationModel.fromJson(json.decode(response.body));
+    if(response.statusCode >= 200 && response.statusCode <= 299){
+      print('RESULT FROM SERVER: ${json.decode(response.body)}');
+      return OrganisationModel.fromJson(json.decode(utf8.decode(response.bodyBytes)));
     } else if (response.statusCode == 403){
       throw BadRequestException('Invalid token');
     } else{

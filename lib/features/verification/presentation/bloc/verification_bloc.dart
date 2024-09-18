@@ -13,7 +13,7 @@ class VerificationBloc extends Bloc<VerificationEvent, VerificationState> {
       final result = await usecase.execute(event.verificationCode);
       result.fold(
         (failure){
-          failure is IncorrectCodeFailure ? emit(WrongDataState()) : emit(FailureState());
+          failure is IncorrectCodeFailure ? emit(WrongDataState()) : emit(FailureWhileCheckingCodeState());
         },
         (success) => emit(CorrectDataState())
       );

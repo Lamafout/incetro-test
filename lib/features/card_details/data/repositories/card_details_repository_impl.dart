@@ -18,6 +18,7 @@ class CardDetailsRepositoryImpl implements CardDetailsRepository {
     } else {
       try {
         final response = await cardDetailsRemoteSource.getOrganisationById(id, token);
+        print('ДО СЮДА ДОШЁЛ');
         return Right(response.toEntity());
       } on BadRequestException{
         final refreshToken = await cardDetailsLocalSource.getToken('refresh');

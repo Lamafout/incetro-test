@@ -20,5 +20,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         }
       ); 
     });
+    on<SuccessfulVerificationEvent>((event, emit) {
+      emit(InitialState());
+    });
   }
 }

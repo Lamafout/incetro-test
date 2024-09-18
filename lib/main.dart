@@ -106,6 +106,7 @@ class _HomePageState extends State<HomePage> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            pinned: true,
             actions: [
               SizedBox(
                 height: 30,

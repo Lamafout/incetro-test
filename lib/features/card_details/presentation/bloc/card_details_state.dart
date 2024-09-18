@@ -7,4 +7,7 @@ class GotOrganisationState extends CardDetailsState {
   GotOrganisationState(this.organisation);
 }
 class NoTokenState extends CardDetailsState {}
-class FailureState extends CardDetailsState {}
+class FailureWhileGettingCardDetailsState extends CardDetailsState {
+  final String errorMessage;
+  FailureWhileGettingCardDetailsState(this.errorMessage);
+}

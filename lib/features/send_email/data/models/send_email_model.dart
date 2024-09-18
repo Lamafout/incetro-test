@@ -2,8 +2,8 @@ import 'package:incetro_test/features/send_email/domain/entities/send_email.dart
 
 class SendEmailModel {
   String email;
-  int type;
-  SendEmailModel({required this.email}) : type = 0;
+  String type;
+  SendEmailModel({required this.email}) : type = '0';
 
   factory SendEmailModel.fromJson(Map<String, dynamic> json) {
     return SendEmailModel(

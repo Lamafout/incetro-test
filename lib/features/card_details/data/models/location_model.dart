@@ -2,14 +2,14 @@ import 'package:incetro_test/features/card_details/domain/entities/location.dart
 
 class LocationModel{
   final int id;
-  final double latitude;
-  final double longitude;
-  final String city;
-  final String address;
-  final int organisation;
-  final int district;
+  final double? latitude;
+  final double? longitude;
+  final String? city;
+  final String? address;
+  final int organization;
+  final int? district;
 
-  LocationModel(this.id, this.latitude, this.longitude, this.city, this.address, this.organisation, this.district);
+  LocationModel(this.id, this.latitude, this.longitude, this.city, this.address, this.organization, this.district);
 
   factory LocationModel.fromJson(Map<String, dynamic> json) {
     return LocationModel(
@@ -18,7 +18,7 @@ class LocationModel{
       json['longitude'],
       json['city'],
       json['address'],
-      json['organisation'],
+      json['organization'],
       json['district'],
     );
   }
@@ -30,7 +30,7 @@ class LocationModel{
       longitude: longitude,
       city: city,
       address: address,
-      organisation: organisation,
+      organisation: organization,
       district: district,
     );
   }
