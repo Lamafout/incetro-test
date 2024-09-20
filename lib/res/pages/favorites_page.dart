@@ -46,7 +46,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
                   const SizedBox(height: 40),
                 ]
               : state.organisations.data.where((elem) => elem.isFavorite == true)
-                .map((org) => OrganisationCardWidget(organisationsElement: org)).toList(),
+                .map((org) => OrganizationCardWidget(organizationsElement: org)).toList(),
             );
           case UnauthenticatedState():
             return Container(

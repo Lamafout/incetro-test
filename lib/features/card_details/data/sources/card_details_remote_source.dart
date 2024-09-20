@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 class CardDetailsRemoteSource extends RemoteSource{
   Future<OrganisationModel> getOrganisationById(int id, String token) async{
     final response = await http.get(
-      Uri.parse(baseUrl + getOrganisationUrl + '${id.toString()}/'),
+      Uri.parse(baseUrl + getOrganizationUrl + '${id.toString()}/'),
       headers: <String, String>{
         'Authorization': 'Token $token',
       }

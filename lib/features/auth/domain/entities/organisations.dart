@@ -2,7 +2,7 @@ import 'package:incetro_test/features/auth/domain/entities/organisations_element
 import 'package:incetro_test/features/auth/domain/entities/organisations_meta.dart';
 
 class Organisations{ 
-  List <OrganisationsElement> data;
+  List <OrganizationsElement> data;
   OrganisationsMeta meta;
 
   // поле для определения источника данных: если демо, то 1, если нет, то 0

@@ -69,6 +69,7 @@ class _PinCodeInputState extends State<PinCodeInput> {
           switch (state) {
             case CorrectDataState():
               Navigator.pop(context);
+              Navigator.pop(context);
               di<AuthBloc>().add((SuccessfulVerificationEvent()));
               di<AuthBloc>().add(EntryEvent());
             case WrongDataState():

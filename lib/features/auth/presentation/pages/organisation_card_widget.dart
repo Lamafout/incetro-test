@@ -7,16 +7,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:incetro_test/di/di.dart';
 import 'package:incetro_test/features/auth/domain/entities/organisations_element.dart';
 import 'package:incetro_test/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:incetro_test/features/auth/presentation/pages/heart_iconbutton.dart';
+import 'package:incetro_test/features/like/presentation/pages/heart_iconbutton.dart';
 import 'package:incetro_test/features/auth/presentation/pages/organisaions_element_widget.dart';
 import 'package:incetro_test/features/card_details/presentation/bloc/card_details_bloc.dart';
 import 'package:incetro_test/features/card_details/presentation/pages/card_details_page.dart';
 import 'package:incetro_test/features/send_email/presentation/pages/auth_page.dart';
 
-class OrganisationCardWidget extends OrganisationsElementWidget {
-  final OrganisationsElement organisationsElement;
+class OrganizationCardWidget extends OrganisationsElementWidget {
+  final OrganizationsElement organizationsElement;
 
-  const OrganisationCardWidget({super.key, required this.organisationsElement});
+  const OrganizationCardWidget({super.key, required this.organizationsElement});
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +28,10 @@ class OrganisationCardWidget extends OrganisationsElementWidget {
           child: GestureDetector(
               onTap: () {
                 if (state is AuthenticatedState){
-                  di<CardDetailsBloc>().add(SendId(organisationsElement.id));
+                  di<CardDetailsBloc>().add(SendId(organizationsElement.id));
                   Platform.isIOS
-                  ? Navigator.push(context, CupertinoPageRoute(builder: (context) => CardDetailsPage(id: organisationsElement.id,)))
-                  : Navigator.push(context, MaterialPageRoute(builder: (context) => CardDetailsPage(id: organisationsElement.id,)));
+                  ? Navigator.push(context, CupertinoPageRoute(builder: (context) => CardDetailsPage(id: organizationsElement.id,)))
+                  : Navigator.push(context, MaterialPageRoute(builder: (context) => CardDetailsPage(id: organizationsElement.id,)));
                 }
                 else {
                   showModalBottomSheet(
@@ -71,7 +71,7 @@ class OrganisationCardWidget extends OrganisationsElementWidget {
                               width: cardWith,
                               height: cardHeight * 0.65,
                               child: CachedNetworkImage(
-                                imageUrl: organisationsElement.photo ?? '',
+                                imageUrl: organizationsElement.photo ?? '',
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -88,7 +88,7 @@ class OrganisationCardWidget extends OrganisationsElementWidget {
                                       children: [
                                         Expanded(
                                           child: Text(
-                                              organisationsElement.name ?? '',
+                                              organizationsElement.name ?? '',
                                               overflow: TextOverflow.ellipsis,
                                               style: Platform.isIOS
                                                   ? CupertinoTheme.of(context)
@@ -99,7 +99,7 @@ class OrganisationCardWidget extends OrganisationsElementWidget {
                                                       .titleLarge),
                                         ),
                                         //TODO сделать обработку нажатия
-                                        const HeartIconButton(),
+                                        HeartIconButton(organization: organizationsElement,),
                                       ]),
                                   Row(
                                       mainAxisAlignment:
@@ -116,7 +116,7 @@ class OrganisationCardWidget extends OrganisationsElementWidget {
                                               size: 18,
                                             ),
                                             Text(
-                                              organisationsElement.rate == null ? 'Not rated' : organisationsElement.rate.toString(),
+                                              organizationsElement.rate == null ? 'Not rated' : organizationsElement.rate.toString(),
                                               style: const TextStyle(
                                                   fontWeight: FontWeight.bold),
                                             ),
@@ -137,7 +137,7 @@ class OrganisationCardWidget extends OrganisationsElementWidget {
                                           ],
                                         ),
                                         Text(
-                                          organisationsElement.cuisins
+                                          organizationsElement.cuisins
                                                   ?.join(', ') ??
                                               '',
                                           overflow: TextOverflow.ellipsis,

@@ -22,7 +22,7 @@ class OrganisationsElementModel {
       rate: json['rate'],
       averageCheck: json['averageCheck'],
       cuisins: json['cuisins'],
-      isFavorite: json['isCavorite'],
+      isFavorite: json['isFavorite'],
       distance: json['distance'],
     );
   }
@@ -40,8 +40,8 @@ class OrganisationsElementModel {
     };
   }
 
-  OrganisationsElement toEntity() {
-    return OrganisationsElement(
+  OrganizationsElement toEntity() {
+    return OrganizationsElement(
       id: id,
       name: name,
       photo: photo,
@@ -51,6 +51,5 @@ class OrganisationsElementModel {
       isFavorite: isFavorite,
       distance: distance,
     );
-
   }
 }

@@ -9,6 +9,11 @@ import 'package:incetro_test/features/card_details/data/sources/card_details_loc
 import 'package:incetro_test/features/card_details/data/sources/card_details_remote_source.dart';
 import 'package:incetro_test/features/card_details/domain/usecases/card_details_usecase.dart';
 import 'package:incetro_test/features/card_details/presentation/bloc/card_details_bloc.dart';
+import 'package:incetro_test/features/like/data/repositories/like_repository_impl.dart';
+import 'package:incetro_test/features/like/data/sources/like_local_source.dart';
+import 'package:incetro_test/features/like/data/sources/like_remote_source.dart';
+import 'package:incetro_test/features/like/domain/usecases/like_usecase.dart';
+import 'package:incetro_test/features/like/presentation/bloc/like_bloc.dart';
 import 'package:incetro_test/features/send_email/data/repositories/send_email_repository_impl.dart';
 import 'package:incetro_test/features/send_email/data/sources/send_email_local_source.dart';
 import 'package:incetro_test/features/send_email/data/sources/send_email_remote_source.dart';
@@ -55,4 +60,11 @@ void setupDi() async {
   di.registerLazySingleton<CardDetailsRepositoryImpl>(() => CardDetailsRepositoryImpl(cardDetailsLocalSource: di<CardDetailsLocalSource>(), cardDetailsRemoteSource: di<CardDetailsRemoteSource>()));
   di.registerLazySingleton<CardDetailsUsecase>(() => CardDetailsUsecase(cardDetailsRepository: di<CardDetailsRepositoryImpl>()));
   di.registerLazySingleton<CardDetailsBloc>(() => CardDetailsBloc());
+
+  // LIKE BUTTON
+  di.registerLazySingleton<LikeLocalSource>(() => LikeLocalSource(sharedPreferences));
+  di.registerLazySingleton<LikeRemoteSource>(() => LikeRemoteSource());
+  di.registerLazySingleton<LikeRepositoryImpl>(() => LikeRepositoryImpl(likeLocalSource: di<LikeLocalSource>(), likeRemoteSource: di<LikeRemoteSource>()));
+  di.registerLazySingleton<LikeUsecase>(() => LikeUsecase(di<LikeRepositoryImpl>()));
+  di.registerLazySingleton<LikeBloc>(() => LikeBloc());
 }

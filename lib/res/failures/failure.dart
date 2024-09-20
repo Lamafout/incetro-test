@@ -34,3 +34,14 @@ class IncorrectTokenException implements Exception{
   @override
   String toString() => 'IncorrectTokenException: $message';
 }
+
+class IsAlreadyLikedException implements Exception{
+  final String message;
+  IsAlreadyLikedException(this.message);
+  @override
+  String toString() => 'IsAlreadyLiked: $message';
+}
+
+class IsAlreadyLikesFailure extends Failure {
+  IsAlreadyLikesFailure(super.message);
+}

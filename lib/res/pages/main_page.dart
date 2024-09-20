@@ -27,34 +27,34 @@ class _MainPageState extends State<MainPage> {
       builder: (context, state) {
         switch (state) {
           case InitialState():
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CircularProgressIndicator(
+            return SizedBox(
+              height: MediaQuery.of(context).size.height * 0.8,
+              child: Center(
+                child: CircularProgressIndicator(
                   color: Theme.of(context).iconTheme.color,
-                )
-              ],
+                ),
+              ),
             );
           case AuthenticatedState():
             return Column(
-              children: state.organisations.data.map((organisation) => OrganisationCardWidget(organisationsElement: organisation)).toList(),
+              children: state.organisations.data.map((organisation) => OrganizationCardWidget(organizationsElement: organisation)).toList(),
             );
           case UnauthenticatedState():
             return Column(
               children: [
-                ...state.organisations.data.map((organisation) => OrganisationCardWidget(organisationsElement: organisation)),
+                ...state.organisations.data.map((organisation) => OrganizationCardWidget(organizationsElement: organisation)),
                 const AuthCardWidget(),
               ]
             );
           case FailureState():
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextButton(
+            return SizedBox(
+              height: MediaQuery.of(context).size.height * 0.8,
+              child: Center(
+                child: TextButton(
                   onPressed: () => di<AuthBloc>().add(EntryEvent()),
                   child: Text('${state.message}. Tap to reload'),
                 ),
-              ],
+              ),
             );
           default:
             return Container();
