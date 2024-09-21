@@ -29,46 +29,54 @@ class HeartIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LikeBloc, Map<String, LikeState>>(
+    return BlocListener<LikeBloc, Map<String, LikeState>>(
       bloc: di<LikeBloc>(),
-      builder: (context, state) {
+      listener: (context, state) {
         final currentState = state[organization.id.toString()];
 
-        bool isFilled = organization.isFavorite ?? false;
-
         if (currentState is LikeFailureState) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            _showSnackBar(
-              context,
-              'Network error',
-              Icons.wifi_tethering_error_rounded_rounded,
-            );
-          });
+          _showSnackBar(
+            context,
+            'Network error',
+            Icons.wifi_tethering_error_rounded_rounded,
+          );
         } else if (currentState is LikeBadRequestState) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            _showSnackBar(
-              context,
-              'Bad request error',
-              Icons.warning_outlined,
-            );
-          });
-        } else if (currentState is LikedState) {
-          isFilled = true;
-        } else if (currentState is DisLikedState) {
-          isFilled = false;
-        }
-
-        return IconButton(
-          icon: Icon(
-            isFilled ? CupertinoIcons.heart_fill : CupertinoIcons.heart,
-            size: 30,
-          ),
-          onPressed: () {
-            di<LikeBloc>().add(TapOnLikeButton(organization.id));
-          },
-        );
+          _showSnackBar(
+            context,
+            'Bad request error',
+            Icons.warning_outlined,
+          );
+        } 
       },
+      child: BlocBuilder<LikeBloc, Map<String, LikeState>>(
+        bloc: di<LikeBloc>(),
+        builder: (context, state) {
+          final currentState = state[organization.id.toString()];
+
+          bool isFilled = organization.isFavorite ?? false;
+
+          if (currentState is LikedState) {
+            isFilled = true;
+          } else if (currentState is DisLikedState) {
+            isFilled = false;
+          }
+
+          return IconButton(
+            icon: Icon(
+              isFilled ? CupertinoIcons.heart_fill : CupertinoIcons.heart,
+              size: 30,
+            ),
+            onPressed: () {
+              !isFilled
+              ? di<ValueNotifier<int>>().value++
+              : di<ValueNotifier<int>>().value--;
+              di<LikeBloc>().add(TapOnLikeButton(organization.id));
+            },
+          );
+        },
+      ),
     );
   }
 }
+
 

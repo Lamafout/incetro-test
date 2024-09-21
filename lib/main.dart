@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:incetro_test/di/di.dart';
+import 'package:incetro_test/features/like/presentation/pages/like_counter.dart';
 import 'package:incetro_test/res/pages/favorites_page.dart';
 import 'package:incetro_test/res/pages/main_page.dart';
 import 'package:incetro_test/res/pages/profile_page.dart';
@@ -40,7 +41,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedPage = 1;
   _onTap(index){
-    //TODO с помощью блок листенера сделать проверку на стейт 
     setState(() {
       _selectedPage = index;
     });
@@ -58,28 +58,7 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: 30,
                 width: 30,
-                child: Stack(
-                  children: [
-                    Center(
-                      child:
-                        Icon(
-                          CupertinoIcons.heart,
-                          color: Theme.of(context).iconTheme.color,
-                          size: 32,
-                        ),
-                    ),
-                      Center(
-                        child: Text(
-                          '17',
-                          style: TextStyle(
-                            color: Theme.of(context).iconTheme.color,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        )
-                      ),
-                  ],
-                ),
+                child: LikeCounter(),
               )
             ],
             flexibleSpace: const FlexibleSpaceBar(

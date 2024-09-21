@@ -82,6 +82,7 @@ class _PinCodeInputState extends State<PinCodeInput> {
           }
         },
         child: Material(
+          color: Theme.of(context).scaffoldBackgroundColor,
           child: Stack(
             children: [
               Row(

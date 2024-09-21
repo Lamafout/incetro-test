@@ -98,8 +98,24 @@ class OrganizationCardWidget extends OrganisationsElementWidget {
                                                       .textTheme
                                                       .titleLarge),
                                         ),
-                                        //TODO сделать обработку нажатия
-                                        HeartIconButton(organization: organizationsElement,),
+                                        state is AuthenticatedState
+                                        ? HeartIconButton(organization: organizationsElement,)
+                                        : IconButton(
+                                            icon: const Icon(
+                                              CupertinoIcons.heart,
+                                              size: 30,
+                                            ),
+                                            onPressed: () {
+                                              showModalBottomSheet(
+                                                shape: const BeveledRectangleBorder(borderRadius: BorderRadius.only(topLeft:  Radius.circular(20), topRight: Radius.circular(20))),
+                                                isScrollControlled: true,
+                                                context: context,
+                                                builder: (context) {
+                                                  return const AuthPage();
+                                                }
+                                              );
+                                            },
+                                          ),
                                       ]),
                                   Row(
                                       mainAxisAlignment:

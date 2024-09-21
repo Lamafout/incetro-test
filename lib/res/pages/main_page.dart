@@ -17,6 +17,7 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
+    di<AuthBloc>().add(SuccessfulVerificationEvent());
     di<AuthBloc>().add(EntryEvent());
   }
 
@@ -36,6 +37,9 @@ class _MainPageState extends State<MainPage> {
               ),
             );
           case AuthenticatedState():
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              di<ValueNotifier<int>>().value = state.organisations.data.where((elem) => elem.isFavorite == true).length;
+            });
             return Column(
               children: state.organisations.data.map((organisation) => OrganizationCardWidget(organizationsElement: organisation)).toList(),
             );

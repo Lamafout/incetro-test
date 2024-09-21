@@ -18,6 +18,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
   @override
   void initState() {
     super.initState();
+    di<AuthBloc>().add(SuccessfulVerificationEvent());
     di<AuthBloc>().add(EntryEvent());
   }
 
@@ -80,13 +81,13 @@ class _FavoritesPageState extends State<FavoritesPage> {
                 ),
               ],
             );
-          default: return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CircularProgressIndicator(
+          default: return SizedBox(
+              height: MediaQuery.of(context).size.height * 0.8,
+              child: Center(
+                child: CircularProgressIndicator(
                   color: Theme.of(context).iconTheme.color,
-                )
-              ],
+                ),
+              ),
             );
         }
       }

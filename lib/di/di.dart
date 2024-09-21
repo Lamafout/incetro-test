@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:incetro_test/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:incetro_test/features/auth/data/sources/auth_local_source.dart';
@@ -14,6 +15,7 @@ import 'package:incetro_test/features/like/data/sources/like_local_source.dart';
 import 'package:incetro_test/features/like/data/sources/like_remote_source.dart';
 import 'package:incetro_test/features/like/domain/usecases/like_usecase.dart';
 import 'package:incetro_test/features/like/presentation/bloc/like_bloc.dart';
+import 'package:incetro_test/features/like/presentation/pages/like_counter.dart';
 import 'package:incetro_test/features/send_email/data/repositories/send_email_repository_impl.dart';
 import 'package:incetro_test/features/send_email/data/sources/send_email_local_source.dart';
 import 'package:incetro_test/features/send_email/data/sources/send_email_remote_source.dart';
@@ -67,4 +69,5 @@ void setupDi() async {
   di.registerLazySingleton<LikeRepositoryImpl>(() => LikeRepositoryImpl(likeLocalSource: di<LikeLocalSource>(), likeRemoteSource: di<LikeRemoteSource>()));
   di.registerLazySingleton<LikeUsecase>(() => LikeUsecase(di<LikeRepositoryImpl>()));
   di.registerLazySingleton<LikeBloc>(() => LikeBloc());
+  di.registerSingleton<ValueNotifier<int>>(ValueNotifier<int>(0));
 }
