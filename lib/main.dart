@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:incetro_test/di/di.dart';
 import 'package:incetro_test/features/like/presentation/pages/like_counter.dart';
-import 'package:incetro_test/res/pages/favorites_page.dart';
+import 'package:incetro_test/res/pages/favourites_page.dart';
 import 'package:incetro_test/res/pages/main_page.dart';
 import 'package:incetro_test/res/pages/profile_page.dart';
 
@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
       _selectedPage = index;
     });
   }
-  final _pages = const [FavoritesPage(), MainPage(), ProfilePage()];
+  final _pages = const [FavouritesPage(), MainPage(), ProfilePage()];
 
   @override
   Widget build(BuildContext context) {

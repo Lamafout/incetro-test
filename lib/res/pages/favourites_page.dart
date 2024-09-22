@@ -5,16 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:incetro_test/di/di.dart';
 import 'package:incetro_test/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:incetro_test/features/auth/presentation/pages/auth_card.dart';
 import 'package:incetro_test/features/auth/presentation/pages/organisation_card_widget.dart';
 
-class FavoritesPage extends StatefulWidget {
-  const FavoritesPage({super.key});
+class FavouritesPage extends StatefulWidget {
+  const FavouritesPage({super.key});
   @override
-  State<FavoritesPage> createState() => _FavoritesPageState();
+  State<FavouritesPage> createState() => _FavouritesPageState();
 }
 
-class _FavoritesPageState extends State<FavoritesPage> {
+class _FavouritesPageState extends State<FavouritesPage> {
   @override
   void initState() {
     super.initState();
